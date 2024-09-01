@@ -1736,19 +1736,11 @@
 
   </section>
 
-
   <!-- Footer-->
   <section class="footer">
     <div class="container">
-
       <div class="row">
-
-
-
         <div class="col-md-6 col-nombres-footer d-flex justify-content-end align-items-center">
-
-
-
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
             x="0px" y="0px" viewBox="0 0 250.2 277" style="enable-background:new 0 0 250.2 277;" xml:space="preserve"
             data-inject-url="https://www.fixdate.io/modelo-invitacion/115/img/ampersand.svg"
@@ -1815,7 +1807,20 @@
 
               </div>
             </li>
-
+            {% if user.is_authenticated %}
+            <li>
+              <div>
+                <a href="{% url 'export_sugerencias_excel' %}" class="download-link" target="_blank">
+                  Descargar reporte de canciones
+                </a>
+              </div><br>
+              <div>
+                <a href="{% url 'exportar_invitados' %}" class="download-link" target="_blank">
+                  Descargar reporte de invitados
+                </a>
+              </div>
+            </li>
+            {% endif %}
           </ul>
 
         </div>
@@ -1833,8 +1838,6 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-
-
           <p>
             Felipe<span class="heart">❤</span> Maira
             <g>
@@ -2063,7 +2066,7 @@
 
             </div>
 
-            <div class="msj-content d-flex flex-column justify-content-center"></div>
+            <div class="msj-content d-flex flex-column justify-content-center" id="mensaje_error"></div>
 
           </div>
 
@@ -3101,93 +3104,6 @@
 
     }
 
-
-
-    // Enviar sugerencia
-    $('body').on('click', '#sendSugerenciaCancion', function(e) {
-
-      e.preventDefault();
-
-
-      if (isOkSugerirCancion()) //Form bien validado
-      {
-
-        // Load and disabled buttom.
-        $("#sendSugerenciaCancion").text(lang_enviandoSugerencia + "...");
-        $("#sendSugerenciaCancion").prop("disabled", true);
-
-        // Obtengo el Form.
-        var formulario = $("#formSugerirCancion")[0];
-
-        // Obtengo los datos del formulario
-        var datos = new FormData(formulario);
-
-
-        // Visualizar como viajan los datos
-        for (var pair of datos.entries()) {
-          console.log(pair[0] + ", " + pair[1]);
-        }
-
-
-        // Envio con fetch los datos mediante POST
-        fetch(_pathApp + "producto/fetchs/sugerir-cancion.php", {
-            method: "POST",
-            body: datos
-          })
-          // Promesas fetch
-          .then(res => res.json())
-          .then(data => {
-
-            // Si recibo error 
-            if (data.error === true) {
-
-              $("#sendSugerenciaCancion").text(lang_sugerirCancion);
-              $("#sendSugerenciaCancion").prop("disabled", false);
-
-              // Imprimo el error
-              $('#formSugerirCancion').after('<span id="error-form">' + data.desc + '</span>');
-            }
-
-            // Si no hay error 
-            if (data.error === false) {
-
-              $("#sendSugerenciaCancion").text(lang_sugerirCancion);
-              $("#sendSugerenciaCancion").prop("disabled", false);
-
-
-              // Oculto elementos del form y reseteo
-              $('#formSugerirCancion')[0].reset();
-              $('#modalSugerirCancion .formulario-content, #modalSugerirCancion .modal-footer, #modalSugerirCancion h5').hide();
-
-
-              // Acomodo el css para centrar mensaje
-              $('#modalSugerirCancion .modal-body').addClass('fix-height');
-
-
-              // Muestro mensaje de exito
-
-              $('#modalSugerirCancion .msj-content').html(
-                "<h5>" + lang_sugerirCancionMsjExito_1 + "</h5><p>" + lang_sugerirCancionMsjExito_2 + "</p>"
-              ).show();
-
-
-              // Cierro modal y vuelvo a activar form
-              setTimeout(function() {
-
-                $('#modalSugerirCancion').modal('hide');
-                $('#modalSugerirCancion .formulario-content, #modalSugerirCancion .modal-footer, #modalSugerirCancion h5').show();
-                $('#modalSugerirCancion .msj-content').html('').hide();
-                $('#modalSugerirCancion .modal-body').removeClass('fix-height');
-
-              }, 4000);
-
-            }
-
-          });
-      }
-
-
-    });
   </script>
 
 

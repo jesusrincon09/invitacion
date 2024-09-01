@@ -11,9 +11,8 @@ class Invitados(models.Model):
     
 class SugerenciaCancion(models.Model):
     nombre_usuario = models.CharField(max_length=100)
-    nombre_cancion = models.CharField(max_length=255)
-    autor = models.CharField(max_length=255)
+    nombre_cancion_autor = models.CharField(max_length=255)
     link = models.URLField(max_length=500)
 
     def __str__(self):
-        return f"{self.nombre_cancion}"
+        return f"{self.nombre_cancion_autor}"
