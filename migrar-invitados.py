@@ -15,7 +15,8 @@ try:
     for index, row in df.iterrows():
         nombre_completo = row['Nombre completo']
         telefono = row['Telefono']
-        invitado = Invitados(nombre_completo=nombre_completo, telefono=telefono)
+        code = row['Codigo']
+        invitado = Invitados(nombre_completo=nombre_completo, telefono=telefono, code=code)
         invitado.save()
 
     print("Los invitados han sido cargados exitosamente.")

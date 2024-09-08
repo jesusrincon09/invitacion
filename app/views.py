@@ -16,8 +16,8 @@ class IndexView(TemplateView):
 class ConfirmarAsistencia(View):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        telefono = data.get('telefono')
-        es_invitado = Invitados.objects.filter(telefono=telefono).first()
+        code = data.get('telefono')
+        es_invitado = Invitados.objects.filter(code=code).first()
 
         if es_invitado: 
             es_invitado.confirmado=True
@@ -90,38 +90,31 @@ class ExportSugerenciasExcelView(View):
     
 class ExportInvitadosExcelView(View):
     def get(self, request, *args, **kwargs):
-        # Crear un nuevo libro de trabajo y seleccionar la hoja activa
         wb = openpyxl.Workbook()
         ws = wb.active
         ws.title = "Invitados"
 
-        # Agregar el título
         ws.merge_cells('A1:C1')
         cell = ws['A1']
         cell.value = "Reporte de Invitados"
         cell.font = Font(size=14, bold=True)
         cell.alignment = Alignment(horizontal="center", vertical="center")
         cell.fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
-
-        # Agregar los encabezados de las columnas
         headers = ['Nombre Completo', 'Teléfono', 'Confirmado']
         ws.append(headers)
 
-        # Aplicar estilos a los encabezados
-        for cell in ws[2]:  # Fila de encabezados es la segunda fila
+        for cell in ws[2]:  
             cell.font = Font(bold=True)
             cell.alignment = Alignment(horizontal="center", vertical="center")
             cell.fill = PatternFill(start_color="ADD8E6", end_color="ADD8E6", fill_type="solid")
 
-        # Recuperar los datos del modelo y agregarlos a la hoja de cálculo
         invitados = Invitados.objects.all()
         for invitado in invitados:
             ws.append([invitado.nombre_completo, invitado.telefono, "Sí" if invitado.confirmado else "No"])
 
-        # Ajustar el ancho de las columnas
         for col in ws.columns:
             max_length = 0
-            column_letter = get_column_letter(col[0].column)  # Usa get_column_letter para obtener la letra de la columna
+            column_letter = get_column_letter(col[0].column)  
             for cell in col:
                 if cell.value:
                     try:
@@ -132,7 +125,6 @@ class ExportInvitadosExcelView(View):
             adjusted_width = max_length + 2
             ws.column_dimensions[column_letter].width = adjusted_width
 
-        # Preparar la respuesta para la descarga
         response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         response["Content-Disposition"] = "attachment; filename=invitados.xlsx"
         wb.save(response)
