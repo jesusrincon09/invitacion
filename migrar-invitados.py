@@ -13,10 +13,9 @@ try:
     df = pd.read_excel(archivo_excel)
 
     for index, row in df.iterrows():
-        nombre_completo = row['Nombre completo']
-        telefono = row['Telefono']
+        nombre_completo = row['Nombre']
         code = row['Codigo']
-        invitado = Invitados(nombre_completo=nombre_completo, telefono=telefono, code=code)
+        invitado = Invitados(nombre_completo=nombre_completo, code=code)
         invitado.save()
 
     print("Los invitados han sido cargados exitosamente.")

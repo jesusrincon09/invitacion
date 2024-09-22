@@ -16,20 +16,29 @@ class IndexView(TemplateView):
 class ConfirmarAsistencia(View):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        code = data.get('telefono')
-        es_invitado = Invitados.objects.filter(code=code).first()
-
-        if es_invitado: 
-            es_invitado.confirmado=True
-            es_invitado.save()
-            nombre = es_invitado.nombre_completo
-            return JsonResponse({'status': 'success', 'message': 'Invitado confirmado', 'nombre': nombre})
-        else:
-            return JsonResponse({'status': 'error', 'message': 'No es invitado'}, status=404)
+        if 'telefono' in data:
+            code = data.get('telefono')
+            es_invitado = Invitados.objects.filter(code=code)
+            if es_invitado.exists():
+                invitados_list = [
+                    {'id': invitado.id, 'nombre': invitado.nombre_completo, 'confirmado': invitado.confirmado}
+                    for invitado in es_invitado
+                ]
+                return JsonResponse({'status': 'success', 'invitados': invitados_list})
+            else:
+                return JsonResponse({'status': 'error', 'message': 'No es invitado'}, status=404)
         
+        elif 'invitados' in data:
+            invitados_ids = data.get('invitados', [])
+            Invitados.objects.filter(id__in=invitados_ids).update(confirmado=True)
+            return JsonResponse({'status': 'success', 'message': 'Asistencia confirmada'})
+
+        return JsonResponse({'status': 'error', 'message': 'Solicitud incorrecta'}, status=400)
 
     def get(self, request, *args, **kwargs):
         return JsonResponse({'status': 'ready'}, status=200)
+
+
 
 class SugerirCancionView(View):
     def post(self, request, *args, **kwargs):
@@ -100,7 +109,7 @@ class ExportInvitadosExcelView(View):
         cell.font = Font(size=14, bold=True)
         cell.alignment = Alignment(horizontal="center", vertical="center")
         cell.fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
-        headers = ['Nombre Completo', 'Teléfono', 'Confirmado']
+        headers = ['Nombre Completo',  'Confirmado']
         ws.append(headers)
 
         for cell in ws[2]:  
@@ -110,7 +119,7 @@ class ExportInvitadosExcelView(View):
 
         invitados = Invitados.objects.all()
         for invitado in invitados:
-            ws.append([invitado.nombre_completo, invitado.telefono, "Sí" if invitado.confirmado else "No"])
+            ws.append([invitado.nombre_completo,"Sí" if invitado.confirmado else "No"])
 
         for col in ws.columns:
             max_length = 0

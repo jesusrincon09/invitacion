@@ -623,15 +623,9 @@
             </div>
 
             <div class="info-box">
-              <h6>Lugar</h6>
-              <p>Parroquia Nuestra Señora de Lujan</p>
-              <a href="#" data-evento="Ceremonia" class="boton confirmar-asistencia">Confirmar asistencia</a>
-            </div>
-
-            <div class="info-box">
               <h6>Dirección</h6>
-              <p>Av. Pergamino 203 - BsAs</p>
-              <a href="#" data-evento="Ceremonia" class="boton modal-como-llegar">¿Cómo llegar?</a>
+              <p>Cra. 37 #52 - 34, Cabecera del llano, Bucaramanga, Santander</p>
+              <a href="https://maps.app.goo.gl/SBPTHSxKjMZdYNVe9" target="_blank" class="boton">¿Cómo llegar?</a>
             </div>
 
           </div>
@@ -806,20 +800,18 @@
             </div>
 
             <div class="info-box">
-              <h6>Lugar</h6>
-              <p>Salon de fiestas Avril</p>
-              <a href="#" data-evento="Fiesta" class="boton confirmar-asistencia">Confirmar asistencia</a>
-            </div>
-
-            <div class="info-box">
               <h6>Dirección</h6>
-              <p>Av. Los Reartes 12 - BsAs</p>
-              <a href="#" data-evento="Fiesta" class="boton modal-como-llegar">¿Cómo llegar?</a>
+              <p>Sede Campestre Sena Km 7 Vía Palenque, Rincón de Girón</p>
+              <a href="https://maps.app.goo.gl/SBPTHSxKjMZdYNVe9" target="_blank" class="boton">¿Cómo llegar?</a>
             </div>
 
           </div>
-
+          
         </div>
+        <!-- Botón que abre la modal -->
+      <div class="col-md-12 col-ceremonia text-center">
+        <a href="#" data-evento="Ceremonia" class="boton confirmar-asistencia" onclick="prepararModal()">Confirmar asistencia</a>
+      </div>
 
 
       </div>
@@ -991,16 +983,6 @@
 
       <div class="carrusel slick-initialized slick-slider slick-dotted">
 
-
-
-
-
-
-
-
-
-
-
         <!-- Impmrimo el bloque con la imagen -->
 
         <div class="slick-list draggable" style="padding: 0px 20px;">
@@ -1088,10 +1070,9 @@
               role="tabpanel" id="slick-slide03" aria-describedby="slick-slide-control03">
               <div class="polaroid">
 
-                <a href="https://www.fixdate.io/modelo-invitacion/115/img/galeria/4.jpg" data-fancybox="galeria"
-                  tabindex="0">
-                  <img src="https://www.fixdate.io/modelo-invitacion/115/img/galeria/4.jpg" alt="">
-                </a>
+                <a href="{% static 'img/imagen5.jpg' %}" data-fancybox="galeria" tabindex="-1">
+                  <img src="{% static 'img/imagen5.jpg' %}" alt="Descripción de la imagen">
+                 </a>
 
               </div>
             </div>
@@ -1099,10 +1080,9 @@
               style="width: 624px;" tabindex="-1">
               <div class="polaroid">
 
-                <a href="https://www.fixdate.io/modelo-invitacion/115/img/galeria/1.jpg" data-fancybox="galeria"
-                  tabindex="0">
-                  <img src="https://www.fixdate.io/modelo-invitacion/115/img/galeria/1.jpg" alt="">
-                </a>
+                <a href="{% static 'img/imagen2.jpg' %}" data-fancybox="galeria" tabindex="-1">
+                  <img src="{% static 'img/imagen2.jpg' %}" alt="Descripción de la imagen">
+                 </a>
 
               </div>
             </div>
@@ -1110,21 +1090,18 @@
               tabindex="-1">
               <div class="polaroid">
 
-                <a href="https://www.fixdate.io/modelo-invitacion/115/img/galeria/2.jpg" data-fancybox="galeria"
-                  tabindex="-1">
-                  <img src="https://www.fixdate.io/modelo-invitacion/115/img/galeria/2.jpg" alt="">
-                </a>
+                <a href="{% static 'img/imagen3.jpg' %}" data-fancybox="galeria" tabindex="-1">
+                  <img src="{% static 'img/imagen3.jpg' %}" alt="Descripción de la imagen">
+                 </a>
 
               </div>
             </div>
             <div class="slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" style="width: 624px;"
               tabindex="-1">
               <div class="polaroid">
-
-                <a href="https://www.fixdate.io/modelo-invitacion/115/img/galeria/3.jpg" data-fancybox="galeria"
-                  tabindex="-1">
-                  <img src="https://www.fixdate.io/modelo-invitacion/115/img/galeria/3.jpg" alt="">
-                </a>
+                <a href="{% static 'img/imagen4.jpg' %}" data-fancybox="galeria" tabindex="-1">
+                  <img src="{% static 'img/imagen4.jpg' %}" alt="Descripción de la imagen">
+                 </a>
 
               </div>
             </div>
@@ -1132,32 +1109,14 @@
               tabindex="-1">
               <div class="polaroid">
 
-                <a href="https://www.fixdate.io/modelo-invitacion/115/img/galeria/4.jpg" data-fancybox="galeria"
-                  tabindex="-1">
-                  <img src="https://www.fixdate.io/modelo-invitacion/115/img/galeria/4.jpg" alt="">
-                </a>
+                <a href="{% static 'img/imagen1.jpg' %}" data-fancybox="galeria" tabindex="-1">
+                  <img src="{% static 'img/imagen1.jpg' %}" alt="Descripción de la imagen">
+                 </a>
 
               </div>
             </div>
           </div>
         </div>
-
-
-        <!-- Impmrimo el bloque con la imagen -->
-
-
-
-
-        <!-- Impmrimo el bloque con la imagen -->
-
-
-
-
-        <!-- Impmrimo el bloque con la imagen -->
-
-
-
-
 
         <ul class="slick-dots" style="" role="tablist">
           <li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control00"
@@ -1172,8 +1131,6 @@
       </div>
 
     </div>
-
-
 
 
   </section>
@@ -1773,10 +1730,6 @@
             </li>
 
             <li>
-              <a href="#" data-evento="Fiesta" class="confirmar-asistencia">Confirmar asistencia a fiesta</a>
-            </li>
-
-            <li>
               <a href="#" class="sugerir-cancion">Sugerir canción</a>
             </li>
 
@@ -1947,7 +1900,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="number" class="form-control" id="nombreAsistente" name="telefono"
+                  <input type="text" class="form-control" id="nombreAsistente" name="telefono"
                     placeholder="Ingresa tu código de confirmación" required>
                 </div>
                 <input id="eventoAsistencia" type="hidden" name="evento" value="">
@@ -1956,7 +1909,7 @@
             <div class="msj-content d-flex flex-column justify-content-center"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" id="sendAsistencia" class="boton">Confirmar</button>
+            <button type="button" id="sendAsistencia" class="boton">Validar</button>
         </div>
         </div>
       </div>
