@@ -25,8 +25,9 @@
   <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/addEvent.css' %}">
   <link rel="stylesheet" href="{% static 'css/aos.css' %}">
-  <link rel='stylesheet' href='https://www.fixdate.io/modelo-invitacion/115/css/style.css?v=1688497257' />
-  <link rel='stylesheet' href='https://www.fixdate.io/modelo-invitacion/115/css/responsive.css?v=1688497256'/>
+  <link rel='stylesheet' href="{% static 'css/style.css' %}"/>
+  <link rel='stylesheet' href="{% static 'css/responsive.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="path/to/slick.css"/>
 
   <!-- Color para navegadores moviles -->
   <meta name="theme-color" content="#6f0e01">
@@ -34,7 +35,17 @@
 
   <!-- Fonts -->
   <link rel="stylesheet" href="{% static 'css/css2.css' %}" rel="stylesheet">
-  
+  <style>
+    section.cuenta-regresiva .box-aros {
+        width: 500px;
+        height: 500px;
+        background: url('{% static "img/img_circuloContador01.png" %}') center center no-repeat;
+        background-size: cover;
+        position: relative;
+        z-index: 99;
+        top: -125px;
+    }
+</style>
 
 
   <!-- Favicons -->
@@ -95,10 +106,9 @@
         <div class="modal-body text-center">
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/Grupo_PopUpMusica.webp">
+            <source type="image/webp" srcset='{% static "img/Grupo_PopUpMusica.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/Grupo_PopUpMusica.png">
-            <img class="adorno adorno-1" src="https://www.fixdate.io/modelo-invitacion/115/img/Grupo_PopUpMusica.png"
-              alt="" loading="lazy">
+            <img class="adorno adorno-1" src='{% static "img/Grupo_PopUpMusica.png" %}' alt="" loading="lazy">
           </picture>
 
           <p class="bienvenida-modal-musica">
@@ -127,12 +137,12 @@
           </div>
 
           <picture>
-            <source type="image/webp"
-              srcset="https://www.fixdate.io/modelo-invitacion/115/img/Grupo_PopUpMusica-2.webp">
+            <source type="image/webp" srcset='{% static "img/Grupo_PopUpMusica-2.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/Grupo_PopUpMusica-2.png">
-            <img class="adorno adorno-2" src="https://www.fixdate.io/modelo-invitacion/115/img/Grupo_PopUpMusica-2.png"
-              alt="" loading="lazy">
-          </picture>
+            <img class="adorno adorno-2" 
+                 src='{% static "img/Grupo_PopUpMusica-2.png" %}' alt="" loading="lazy">
+        </picture>
+        
 
           <br>
 
@@ -220,28 +230,26 @@
         <div class="portada-container-2">
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_A.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo01_A.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_A.png">
-            <img class="adorno adorno-1 aos-init aos-animate" data-aos="fade-down" data-aos-delay="500"
-              data-aos-duration="1000" data-aos-once="false"
-              src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_A.png" alt="" loading="lazy">
+            <img class="adorno adorno-1 aos-init aos-animate" data-aos="fade-down" data-aos-delay="500" data-aos-duration="1000"
+              data-aos-once="false" src='{% static "img/flores_Grupo01_A.webp" %}' alt="" loading="lazy">
           </picture>
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_B.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo01_B.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_B.png">
-            <img class="adorno adorno-2 aos-init aos-animate" data-aos="fade-down" data-aos-delay="400"
-              data-aos-duration="1000" data-aos-once="false"
-              src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_B.png" alt="" loading="lazy">
+            <img class="adorno adorno-2 aos-init aos-animate" data-aos="fade-down" data-aos-delay="400" data-aos-duration="1000"
+              data-aos-once="false" src='{% static "img/flores_Grupo01_B.png" %}' alt="" loading="lazy">
           </picture>
+        
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_C.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo01_C.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_C.png">
-            <img class="adorno adorno-3 aos-init aos-animate" data-aos="fade-down" data-aos-delay="400"
-              data-aos-duration="1000" data-aos-once="false"
-              src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo01_C.png" alt="" loading="lazy">
-          </picture>
+            <img class="adorno adorno-3 aos-init aos-animate" 
+                 data-aos="fade-down" data-aos-delay="400" data-aos-duration="1000" data-aos-once="false" src='{% static "img/flores_Grupo01_C.png" %}' alt="" loading="lazy">
+        </picture>
 
 
           <div class="row d-flex justify-content-center align-items-center">
@@ -279,35 +287,10 @@
               </div>
 
               <div class="box-frase-portada">
-                <p>
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                    id="Capa_1" x="0px" y="0px" viewBox="0 0 46.2 40.7" style="enable-background:new 0 0 46.2 40.7;"
-                    xml:space="preserve"
-                    data-inject-url="https://www.fixdate.io/modelo-invitacion/115/img/comilla-apertura.svg"
-                    class="injectable comilla-apertura">
-                    <g>
-                      <g>
-                        <path class=""
-                          d="M12.8,38.7c-1.8,0-3.4-0.4-4.8-1.2c-2.4-1.5-4.2-4-5.2-7.6s-1.1-7.3-0.1-11.2C3.9,14.5,6,10.8,9.2,7.9    S16,3.1,20.1,2.3V6c-2.9,1.1-5.3,2.8-7.5,5.2c-2.2,2.5-3.8,5.1-4.6,7.9c-0.3,1.1-0.5,2.4-0.5,3.8s0.4,1.7,1.3,0.9    c1.2-0.7,2.5-1.1,3.9-1.1c2.2-0.1,4,0.7,5.6,2.2c1.6,1.6,2.4,3.5,2.4,5.6c0,2.3-0.7,4.2-2.2,5.7C17,37.9,15.1,38.7,12.8,38.7z     M35.7,38.7c-1.8,0-3.4-0.4-4.8-1.2c-2.4-1.5-4.2-4-5.2-7.6s-1.1-7.3-0.1-11.2c1.1-4.3,3.3-7.9,6.5-10.9C35.2,5,38.9,3.1,43,2.3V6    c-2.9,1.1-5.3,2.8-7.5,5.2c-2.2,2.5-3.8,5.1-4.6,7.9c-0.3,1.1-0.5,2.4-0.5,3.8s0.4,1.7,1.3,0.9c1.2-0.7,2.5-1.1,3.9-1.1    c2.2-0.1,4,0.7,5.6,2.2c1.6,1.6,2.4,3.5,2.4,5.6c0,2.3-0.8,4.2-2.2,5.7C39.8,37.9,37.9,38.7,35.7,38.7z">
-                        </path>
-                      </g>
-                    </g>
-                  </svg> <br>
+                <p style="font-size: 25px;"> <br>
 
-                  Todos somos mortales, <br> hasta el primer beso y la segunda copa de vino <br>
+                  ¡La cuerda de tres hilos no se rompe fácilmente!<br><strong>Eclesiastés 4:12 </strong><br>
 
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    class="injectable comilla-cierre" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 46.2 40.7"
-                    style="enable-background:new 0 0 46.2 40.7;" xml:space="preserve"
-                    data-inject-url="https://www.fixdate.io/modelo-invitacion/115/img/comilla-cierre.svg">
-                    <g>
-                      <g>
-                        <path class=""
-                          d="M33.6,2.7c1.8,0,3.4,0.4,4.8,1.2c2.4,1.5,4.2,4,5.2,7.6s1.1,7.3,0.1,11.2c-1.1,4.3-3.3,7.9-6.5,10.9    c-3.1,2.9-6.8,4.7-10.9,5.6v-3.7c2.9-1.1,5.3-2.8,7.5-5.2c2.2-2.5,3.8-5.1,4.6-7.9c0.3-1.1,0.5-2.4,0.5-3.8s-0.4-1.7-1.3-0.9    c-1.2,0.7-2.5,1.1-3.9,1.1c-2.2,0.1-4-0.7-5.6-2.2c-1.6-1.6-2.4-3.5-2.4-5.6c0-2.3,0.7-4.2,2.2-5.7C29.5,3.5,31.4,2.7,33.6,2.7z     M10.7,2.7c1.8,0,3.4,0.4,4.8,1.2c2.4,1.5,4.2,4,5.2,7.6s1.1,7.3,0.1,11.2c-1.1,4.3-3.3,7.9-6.5,10.9c-3.1,2.9-6.8,4.7-10.9,5.6    v-3.7c2.9-1.1,5.3-2.8,7.5-5.2c2.2-2.5,3.8-5.1,4.6-7.9c0.3-1.1,0.5-2.4,0.5-3.8s-0.4-1.7-1.3-0.9c-1.2,0.7-2.5,1.1-3.9,1.1    c-2.2,0.1-4-0.7-5.6-2.2C3.6,15,2.8,13.1,2.8,11c0-2.3,0.8-4.2,2.2-5.7C6.6,3.5,8.5,2.7,10.7,2.7z">
-                        </path>
-                      </g>
-                    </g>
-                  </svg>
                 </p>
               </div>
 
@@ -495,30 +478,30 @@
 
 
     <picture>
-      <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_A.webp">
+      <source type="image/webp" srcset='{% static "img/flores_Grupo02_A.webp" %}'>
       <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_A.png">
       <img class="adorno adorno-1 aos-init" data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000"
-        data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_A.png" alt=""
-        loading="lazy">
+        data-aos-once="false" src='{% static "img/flores_Grupo02_A.png" %}' alt="" loading="lazy">
     </picture>
+  
 
 
     <picture>
-      <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_B.webp">
+      <source type="image/webp" srcset='{% static "img/flores_Grupo02_B.webp" %}'>
       <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_B.png">
       <img class="adorno adorno-2 aos-init" data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000"
-        data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_B.png" alt=""
-        loading="lazy">
+        data-aos-once="false" src='{% static "img/flores_Grupo02_B.png" %}' alt="" loading="lazy">
     </picture>
+  
 
 
     <picture>
-      <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_C.webp">
+      <source type="image/webp" srcset='{% static "img/flores_Grupo02_C.webp" %}'>
       <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_C.png">
       <img class="adorno adorno-3 aos-init" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000"
-        data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_C.png" alt=""
-        loading="lazy">
+        data-aos-once="false" src='{% static "img/flores_Grupo02_C.png" %}' alt="" loading="lazy">
     </picture>
+  
 
 
     <div class="container">
@@ -540,7 +523,7 @@
 
             <div class="info-box">
               <h6>Día</h6>
-              <p>Sábado 15 de Mayo - 17hs</p>
+              <p>Sábado 7 de Diciembre - 03:00 P.M.</p>
               <a href="#" class="boton addeventatc" id="addeventatc1" title="" aria-haspopup="true"
                 aria-expanded="false" tabindex="0" translate="no" data-loaded="true" style="visibility: visible;">
 
@@ -580,7 +563,7 @@
 
             <div class="info-box">
               <h6>Día</h6>
-              <p>Sábado 15 de Mayo - 20hs</p>
+              <p>Sábado 7 de Diciembre - 06:00 P.M.</p>
               <a href="#" class="boton addeventatc" id="addeventatc2" title="" aria-haspopup="true"
                 aria-expanded="false" tabindex="0" translate="no" data-loaded="true" style="visibility: visible;">
                 <span class="nameBtn atc_node notranslate">Agendar</span>
@@ -886,12 +869,11 @@
         <div class="col-md-4 item-fiesta">
 
 
-          <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo03.webp">
+        <picture>
+            <source type="image/webp" srcset='{% static "img/flores_Grupo03.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo03.png">
-            <img class="adorno adorno-1" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo03.png"
-              alt="">
-          </picture>
+            <img class="adorno adorno-1" src='{% static "img/flores_Grupo03.png" %}' alt="">
+        </picture>
 
 
 
@@ -1030,29 +1012,27 @@
 
 
     <picture>
-      <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_A.webp">
+      <source type="image/webp" srcset='{% static "img/flores_Grupo02_A.webp" %}'>
       <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_A.png">
-      <img class="adorno adorno-1 aos-init" data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000"
-        data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_A.png" alt=""
-        loading="lazy">
+      <img class="adorno adorno-1 aos-init" data-aos="fade-right" data-aos-delay="500" data-aos-duration="1000" data-aos-once="false" src='{% static "img/flores_Grupo02_A.png" %}' alt="" loading="lazy">
     </picture>
+  
 
 
     <picture>
-      <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_B.webp">
+      <source type="image/webp" srcset='{% static "img/flores_Grupo02_B.webp" %}'>
       <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_B.png">
-      <img class="adorno adorno-2 aos-init" data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000"
-        data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_B.png" alt=""
-        loading="lazy">
+      <img class="adorno adorno-2 aos-init" data-aos="fade-right" data-aos-delay="400" data-aos-duration="1000" data-aos-once="false" src='{% static "img/flores_Grupo02_B.png" %}' alt="" loading="lazy">
     </picture>
+  
 
 
+    
     <picture>
-      <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_C.webp">
+      <source type="image/webp" srcset='{% static "img/flores_Grupo02_C.webp" %}'>
       <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_C.png">
       <img class="adorno adorno-3 aos-init" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000"
-        data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo02_C.png" alt=""
-        loading="lazy">
+        data-aos-once="false" src='{% static "img/flores_Grupo02_C.png" %}' alt="" loading="lazy">
     </picture>
 
 
@@ -1303,11 +1283,10 @@
         <div class="modal-content-2">
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo04.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png">
-            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000"
-              data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png" alt=""
-              loading="">
+            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000" data-aos-once="false"
+              src='{% static "img/flores_Grupo04.png" %}' alt="" loading="lazy">
           </picture>
 
 
@@ -1401,12 +1380,12 @@
         <div class="modal-content-2">
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo04.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png">
-            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000"
-              data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png" alt=""
-              loading="lazy">
+            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000" data-aos-once="false"
+              src='{% static "img/flores_Grupo04.png" %}' alt="" loading="lazy">
           </picture>
+        
 
 
           <div class="img-top-modal d-flex justify-content-center align-items-start">
@@ -1478,11 +1457,10 @@
         <div class="modal-content-2">
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo04.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png">
-            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000"
-              data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png" alt=""
-              loading="lazy">
+            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000" data-aos-once="false"
+              src='{% static "img/flores_Grupo04.png" %}' alt="" loading="lazy">
           </picture>
 
 
@@ -1511,7 +1489,8 @@
 
           <div class="modal-body">
 
-            <p>Contenido Dress Code</p>
+            <p><strong style="color: #6f0e01;">Mujeres:</strong> La novia lucirá un vestido blanco o beige, por lo que te invitamos a elegir otros colores que resalten tu belleza.</p>
+            <p><strong style="color: #6f0e01;">Hombres:</strong>El novio lucirá un elegante traje azul, por lo que te invitamos a elegir otros tonos para tu atuendo. Los corbatines también serán un detalle exclusivo para él.</p>
 
           </div>
 
@@ -1530,11 +1509,10 @@
         <div class="modal-content-2">
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo04.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png">
-            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000"
-              data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png" alt=""
-              loading="lazy">
+            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000" data-aos-once="false"
+              src='{% static "img/flores_Grupo04.png" %}' alt="" loading="lazy">
           </picture>
 
 
@@ -1545,13 +1523,10 @@
             </button>
 
             <div class="white-circle-icon">
-              <img class="injectable modal-icon" src= '{% static "img/tips.png" %}' alt="">
+              <img class="injectable modal-icon" src= '{% static "img/tips.svg" %}' alt="">
             </div>
 
           </div>
-
-
-
           <div class="modal-header">
 
             <h5 class="modal-title">Tips y Notas</h5>
@@ -1579,11 +1554,10 @@
         <div class="modal-content-2">
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo04.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png">
-            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000"
-              data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png" alt=""
-              loading="lazy">
+            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000" data-aos-once="false"
+              src='{% static "img/flores_Grupo04.png" %}' alt="" loading="lazy">
           </picture>
 
 
@@ -1628,11 +1602,10 @@
         <div class="modal-content-2">
 
           <picture>
-            <source type="image/webp" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.webp">
+            <source type="image/webp" srcset='{% static "img/flores_Grupo04.webp" %}'>
             <source type="image/png" srcset="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png">
-            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000"
-              data-aos-once="false" src="https://www.fixdate.io/modelo-invitacion/115/img/flores_Grupo04.png" alt=""
-              loading="lazy">
+            <img class="adorno adorno-1" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000" data-aos-once="false"
+              src='{% static "img/flores_Grupo04.png" %}' alt="" loading="lazy">
           </picture>
 
 
@@ -1705,7 +1678,7 @@
     var langJsVariante = "es-AR";
 
     // Cuenta regresiva
-    var fechaCuentaRegresiva = "12/07/2024 19:00:00";
+    var fechaCuentaRegresiva = "12/07/2024 15:00:00";
 
     // Mapas
     var latitudFiesta = -34.6201481;
@@ -1803,7 +1776,6 @@
   <script src="{% static 'js/svg-inject.min.js' %}"></script>
   <script src="{% static 'js/index.js' %}"></script>
   <script src="{% static 'js/plantilla.js' %}"></script>
-
 
   <!-- Loader -->
   <script>
@@ -2082,38 +2054,37 @@
 
   <!-- Opciones carrusel galeria -->
   <script>
-    $('.carrusel').slick({
-      lazyLoad: 'ondemand',
-      autoplay: true,
-      autoplaySpeed: 2000,
-      centerMode: true,
-      dots: true,
-      centerPadding: '20px',
-      slidesToShow: 3,
-      prevArrow: false,
-      nextArrow: false,
-      responsive: [{
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: '40px',
-          slidesToShow: 3
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: '40px',
-          slidesToShow: 1
-        }
-      }
-      ]
-    });
+      $('.carrusel').slick({
+        lazyLoad: 'ondemand',
+        autoplay: true,
+        autoplaySpeed: 2000,
+        centerMode: true,
+        dots: true,
+        centerPadding: '20px',
+        slidesToShow: 3,
+        prevArrow: false,
+        nextArrow: false,
+        responsive: [{
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }]
+      });
+    
   </script>
-
 
   <!-- Modal Confirmar asistencia -->
   <script>
@@ -2326,7 +2297,7 @@
     }
 
     $('.portada-picture').parallax({
-      imageSrc: _pathProducto + imageParallax
+      imageSrc: '{% static "img/portada.jpeg" %}'
     });
   </script>
 
