@@ -78,6 +78,8 @@ document.getElementById('sendAsistencia').addEventListener('click', function(eve
     mensajeContent.style.marginTop = ''; 
 
     const data = { telefono: telefono };
+    var prueba = getCookie('csrftoken') 
+    console.log(prueba)
 
     fetch('/confirmar-asistencia/', {
         method: 'POST',
@@ -206,6 +208,7 @@ document.getElementById('sendSugerenciaCancion').addEventListener('click', funct
         descripcion_sugerencia: descripcionSugerencia,
         link: linkSugerencia
     };
+
 
     fetch('/sugerir-cancion/', {
         method: 'POST',
