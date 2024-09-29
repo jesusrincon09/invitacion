@@ -87,7 +87,8 @@ document.getElementById('sendAsistencia').addEventListener('click', function(eve
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken') 
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include' 
     })
     .then(response => response.json()) 
     .then(data => {
@@ -216,7 +217,8 @@ document.getElementById('sendSugerenciaCancion').addEventListener('click', funct
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken') 
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include' 
     })
     .then(response => response.json())
     .then(data => {
