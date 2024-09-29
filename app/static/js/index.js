@@ -1,32 +1,28 @@
+const csrfToken = document.getElementById('id_token').value;
+
 document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     const slides = document.querySelectorAll('.slide');
     const slideContainer = document.querySelector('.slides');
-
-    // Clonamos la primera diapositiva y la agregamos al final
     const firstSlideClone = slides[0].cloneNode(true);
     slideContainer.appendChild(firstSlideClone);
 
-    // Función para mostrar la siguiente diapositiva
     function showNextSlide() {
         const slideWidth = slides[0].clientWidth;
         currentIndex++;
 
-        // Transición hacia la siguiente diapositiva
         slideContainer.style.transition = 'transform 0.5s ease';
         slideContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 
-        // Cuando llegue a la última (imagen clonada), resetea de nuevo al principio
         if (currentIndex === slides.length) {
             setTimeout(() => {
-                slideContainer.style.transition = 'none'; // Quitamos la transición
-                slideContainer.style.transform = 'translateX(0px)'; // Volvemos a la primera
-                currentIndex = 0; // Reseteamos el índice
-            }, 500); // Debe coincidir con el tiempo de la transición
+                slideContainer.style.transition = 'none';
+                slideContainer.style.transform = 'translateX(0px)'; 
+                currentIndex = 0; 
+            }, 500); 
         }
     }
 
-    // Cambia automáticamente cada 3 segundos
     setInterval(showNextSlide, 3000);
 });
 
@@ -78,14 +74,14 @@ document.getElementById('sendAsistencia').addEventListener('click', function(eve
     mensajeContent.style.marginTop = ''; 
 
     const data = { telefono: telefono };
-    var prueba = getCookie('csrftoken') 
+    var prueba = csrfToken  
     console.log(prueba)
 
     fetch('/confirmar-asistencia/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken') 
+            'X-CSRFToken': csrfToken   
         },
         body: JSON.stringify(data),
         credentials: 'include' 
@@ -122,7 +118,7 @@ document.getElementById('sendAsistencia').addEventListener('click', function(eve
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'X-CSRFToken': getCookie('csrftoken') 
+                            'X-CSRFToken': csrfToken  
                         },
                         body: JSON.stringify({ invitados: invitadosSeleccionados })
                     })
@@ -215,7 +211,7 @@ document.getElementById('sendSugerenciaCancion').addEventListener('click', funct
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken') 
+            'X-CSRFToken': csrfToken  
         },
         body: JSON.stringify(data),
         credentials: 'include' 
