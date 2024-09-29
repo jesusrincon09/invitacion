@@ -1,0 +1,60 @@
+/* Estilos generales */
+.slider {
+    position: relative;
+    max-width: 90%; /* Ajustamos el ancho total del slider */
+    margin: auto;
+    overflow: hidden;
+    padding-top: 20px;
+    background-color: #f8f8f8;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 33.33%; /* Mostrar 3 imágenes a la vez, cada una ocupará un tercio del ancho */
+    box-sizing: border-box;
+    padding: 0 10px; /* Espaciado entre las imágenes */
+}
+
+.slider img {
+    width: 100%; /* Las imágenes ocuparán todo el ancho de su contenedor */
+    height: auto; /* Mantener la proporción */
+    object-fit: cover;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.slider-indicators .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.slider-indicators .dot.active {
+    background-color: #8b3d3d;
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .slide {
+        min-width: 100%; /* Mostrar solo una imagen en pantallas pequeñas */
+    }
+
+    .slider {
+        max-width: 100%; /* Asegura que el slider ocupe el 100% del ancho en móviles */
+    }
+}
