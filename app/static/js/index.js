@@ -108,7 +108,7 @@ document.getElementById('sendAsistencia').addEventListener('click', function(eve
                     `;
                     invitadosContainer.insertAdjacentHTML('beforeend', invitadoItem);
                 });
-                const botonConfirmar = '<button type="button" id="confirmarAsistencia" class="boton" style="margin-top: 10px;">Confirmar>Confirmar</button>';
+                const botonConfirmar = '<button type="button" id="confirmarAsistencia" class="boton" style="margin-top: 10px;">Confirmar</button>';
                 invitadosContainer.insertAdjacentHTML('beforeend', botonConfirmar);
                 $('#modalAsistencia').modal('show');
                 document.getElementById('confirmarAsistencia').addEventListener('click', function() {
